@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">StreamFlow</string>
+    <string name="tab_home">首页</string>
+    <string name="tab_discover">发现</string>
+    <string name="tab_vip">VIP</string>
+    <string name="tab_profile">我的</string>
+    <string name="search_hint">搜索影片、演员、导演...</string>
+    <string name="vip_exclusive">VIP专享</string>
+    <string name="ad_label">广告</string>
+    <string name="play_now">立即播放</string>
+    <string name="hot_recommend">热门推荐</string>
+    <string name="continue_watch">继续观看</string>
+    <string name="action">动作</string>
+    <string name="comedy">喜剧</string>
+    <string name="suspense">悬疑</string>
+    <string name="animation">动漫</string>
+    <string name="comments">观众评论</string>
+    <string name="favorite">收藏</string>
+    <string name="favorited">已收藏</string>
+    <string name="share">分享</string>
+    <string name="download">下载</string>
+    <string name="upgrade_vip">升级VIP会员</string>
+    <string name="unlock_4k">解锁4K超清画质</string>
+    <string name="subscribe_now">立即开通</string>
+    <string name="watch_history">观看历史</string>
+    <string name="my_favorites">我的收藏</string>
+    <string name="my_downloads">我的下载</string>
+    <string name="settings">设置</string>
+    <string name="logout">退出登录</string>
+</resources>

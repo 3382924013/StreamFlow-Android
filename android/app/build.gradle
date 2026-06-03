@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.streamflow'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.streamflow"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        // 只保留常用 ABI，减小 APK 体积
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    // 签名配置（debug 和 release 使用相同签名方便测试）
+    signingConfigs {
+        release {
+            storeFile file("../streamflow.jks")
+            storePassword "streamflow123"
+            keyAlias "streamflow"
+            keyPassword "streamflow123"
+        }
+        debug {
+            storeFile file("../streamflow.jks")
+            storePassword "streamflow123"
+            keyAlias "streamflow"
+            keyPassword "streamflow123"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true      // 启用代码压缩
+            shrinkResources true    // 启用资源压缩
+            zipAlignEnabled true    // ZIP 对齐
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    // APK 输出配置
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "StreamFlow_v${defaultConfig.versionName}_${variant.buildType.name}.apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.7.0'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+}
